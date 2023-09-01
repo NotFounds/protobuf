@@ -713,11 +713,11 @@ module BasicTest
   end
 
   def test_string_subclass
-    MyString = Class.new(String)
     str = "hello"
+    myString = Class.new(String)
 
     m = proto_module.Foo.new(
-      msg: MyString.new(str)
+      msg: myString.new(str)
     )
 
     assert_equal str, m.msg

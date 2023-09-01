@@ -711,4 +711,15 @@ module BasicTest
     assert_respond_to msg, :has_d?
     refute msg.has_d?
   end
+
+  def test_string_subclass
+    MyString = Class.new(String)
+    str = "hello"
+
+    m = proto_module.Foo.new(
+      msg: MyString.new(str)
+    )
+
+    assert_equal str, m.msg
+  end
 end
